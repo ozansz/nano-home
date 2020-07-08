@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package iot.realtime;
+
+// GRPC Service RealTimeService - Performs real time information servicing
+service RealTimeService {
+    // RPC GetLocalTime - Get local time of the server
+    rpc GetLocalTime (EmptyRequest) returns (RealTime);
+
+    // RPC GetGMTTime - Get real time for specific location
+    rpc GetGMTTime (GetGMTTimeRequest) returns (RealTime);
+}
+
+message EmptyRequest {}
+
+// RealTime data structure
+message RealTime {
+    // ParsedTime data structure
+    message ParsedTime {
+        int32 year = 1;
+        int32 month = 2;
+        int32 day = 3;
+        string day_of_week = 4;
+        int32 hour = 5;
+        int32 minute = 6;
+        int32 second = 7;
+    }
+
+    int64 timestamp = 1;
+    ParsedTime parsed = 2;
+}
+
+// GetGMTTimeRequest data structure
+message GetGMTTimeRequest {
+    string location = 1;
+}

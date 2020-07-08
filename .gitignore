@@ -1,0 +1,9 @@
+rpc/*.pb.go
+nodemcu-client/pb_*
+nodemcu-client/*.pb.h
+nodemcu-client/*.pb.c
+
+nanopb/
+
+.DS_Store
+.DS_Store/
